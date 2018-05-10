@@ -1,0 +1,22 @@
+trigger:
+- dev
+- release/*
+
+phase:
+- phase: Windows
+  queue:
+    demands: agent.os -equals Windows_NT
+  steps:
+  - script: build.cmd -ci
+
+- phase: macOS
+  queue:
+    demands: agent.os -equals Darwin
+  steps:
+  - script: ./build.sh --ci
+
+- phase: Linux
+  queue:
+    demands: agent.os -equals Linux
+  steps:
+  - script: ./build.sh --ci
