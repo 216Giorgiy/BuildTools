@@ -29,12 +29,6 @@ namespace KoreBuild.FunctionalTests
         }
 
         [Fact]
-        public void ThisTestFails()
-        {
-            Assert.True(false, "Test this stuff");
-        }
-
-        [Fact]
         public void FullBuildCompletes()
         {
             var app = _fixture.CreateTestApp("SimpleRepo");

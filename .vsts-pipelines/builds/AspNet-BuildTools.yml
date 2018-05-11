@@ -20,9 +20,21 @@ phases:
     demands: agent.os -equals Darwin
   steps:
   - script: ./build.sh --ci
+  - task: PublishTestResults@2
+    condition: always()
+    inputs:
+      testRunner: vstest
+      testResultsFiles: 'artifacts/logs/**/*.trx'
+
 
 - phase: Linux
   queue:
     demands: agent.os -equals Linux
   steps:
   - script: ./build.sh --ci
+  - task: PublishTestResults@2
+    condition: always()
+    inputs:
+      testRunner: vstest
+      testResultsFiles: 'artifacts/logs/**/*.trx'
+
