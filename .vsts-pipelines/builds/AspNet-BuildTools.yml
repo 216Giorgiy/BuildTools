@@ -9,6 +9,7 @@ phases:
   steps:
   - script: build.cmd -ci
   - task: PublishTestResults@2
+    condition: always()
     inputs:
       testRunner: vstest
       testResultsFiles: 'artifacts/logs/**/*.trx'
