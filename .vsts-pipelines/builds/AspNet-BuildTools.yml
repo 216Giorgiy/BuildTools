@@ -13,11 +13,11 @@ phases:
       testResultsFiles: 'artifacts/logs/**/*.trx'
 
 - phase: macOS
-  queue: Hosted macOS Preview
+  queue: Hosted macOS
   steps:
   - script: ./build.sh --ci
 
 - phase: Linux
-  queue: Hosted Linux Preview
+  queue: Hosted Linux
   steps:
   - script: ./build.sh --ci
