@@ -4,7 +4,8 @@ trigger:
 
 phases:
 - phase: Windows
-  queue: Hosted VS2017
+  queue:
+    demands: cmd
   steps:
   - script: build.cmd -ci
   - task: PublishTestResults@2
@@ -12,12 +13,15 @@ phases:
       testRunner: vstest
       testResultsFiles: 'artifacts/logs/**/*.trx'
 
+
 - phase: macOS
-  queue: Hosted macOS
+  queue:
+    demands: agent.os -equals Darwin
   steps:
   - script: ./build.sh --ci
 
 - phase: Linux
-  queue: Hosted Linux
+  queue:
+    demands: agent.os -equals Linux
   steps:
   - script: ./build.sh --ci
